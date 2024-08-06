@@ -30,11 +30,11 @@ jobs:
           EB_ENV_NAME: ${{ secrets.EB_ENV_NAME }}
         run: |
           zip -r my-app.zip target/my-spring-boot-app-0.0.1-SNAPSHOT.jar
-          aws s3 cp my-app.zip s3://my-app-bucket/my-app.zip
+          aws s3 cp my-app.zip s3://my-app-bucket7/my-app.zip
           aws elasticbeanstalk create-application-version \
             --application-name my-spring-boot-app \
             --version-label v1 \
-            --source-bundle S3Bucket=my-app-bucket,S3Key=my-app.zip
+            --source-bundle S3Bucket=my-app-bucket7,S3Key=my-app.zip
 
           aws elasticbeanstalk update-environment \
             --environment-name $EB_ENV_NAME \
